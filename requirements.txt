@@ -1,7 +1,0 @@
-numpy
-pytest
-setuptools
-tqdm
-dianna
-scikit-learn
-pyyaml
