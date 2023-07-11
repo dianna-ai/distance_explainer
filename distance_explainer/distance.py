@@ -1,17 +1,4 @@
-import os
-import random
-from urllib.parse import urlparse
 import numpy as np
-import tensorflow as tf
-from keras import backend as K
-from keras.preprocessing import image
-from matplotlib import pyplot as plt
-from requests import get
-from skimage.transform import resize
-from tensorflow.keras import backend as K
-from tensorflow.keras.applications.resnet50 import ResNet50
-from tensorflow.keras.applications.resnet50 import decode_predictions
-from tensorflow.keras.applications.resnet50 import preprocess_input
 from tqdm import tqdm
 from dianna.methods.rise import generate_masks_for_images
 from dianna import utils
