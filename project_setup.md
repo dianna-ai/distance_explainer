@@ -7,19 +7,6 @@ text when the development of the software package takes off.
 For a quick reference on software development, we refer to [the software guide
 checklist](https://guide.esciencecenter.nl/#/best_practices/checklist).
 
-## Python versions
-
-This repository is set up with Python versions:
-
-- 3.6
-- 3.7
-- 3.8
-- 3.9
-
-Add or remove Python versions based on project requirements. See [the
-guide](https://guide.esciencecenter.nl/#/best_practices/language_guides/python) for more information about Python
-versions.
-
 ## Package management and dependencies
 
 You can use either pip or conda for installing dependencies and package management. This repository does not force you
