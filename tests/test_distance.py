@@ -1,6 +1,7 @@
 """Tests for the distance_explainer
 """
 import os
+from pathlib import Path
 from typing import Callable
 
 import numpy as np
@@ -14,6 +15,12 @@ DUMMY_EMBEDDING_DIMENSIONALITY = 10
 
 def test_dummy_data_exact_expected_output(set_all_the_seeds: Callable, dummy_model: Callable):
     """Code output should be identical to recorded output."""
+    print(os.getcwd())
+    print(Path('./test_data/test_dummy_data_exact_expected_output.npz').exists())
+    print(Path('./test_data/test_dummy_data_exact_expected_output.npz').absolute())
+    print(Path('./distance_explainer').exists())
+    print(Path('./distance_explainer/tests').exists())
+    print(Path('./tests').exists())
     [expected_saliency, expected_value] = np.load('./test_data/test_dummy_data_exact_expected_output.npz').values()
     embedded_reference = np.random.randn(1, DUMMY_EMBEDDING_DIMENSIONALITY)
     input_arr = np.random.random((32, 32, 3))
