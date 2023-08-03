@@ -43,7 +43,7 @@ class DistanceExplainer:
         # data shape without batch axis and channel axis
         img_shape = input_data.shape[1:3]
         # Expose masks for to make user inspection possible
-        self.masks = generate_masks_for_images(img_shape, active_p_keep, self.n_masks, self.feature_res)
+        self.masks = generate_masks_for_images(img_shape, self.n_masks, active_p_keep, self.feature_res)
         # Make sure multiplication is being done for correct axes
         masked = input_data * self.masks
 
