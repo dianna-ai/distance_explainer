@@ -35,6 +35,7 @@ class Config(YAMLWizard):
                 differing_fields.append(field.name)
         return differing_fields
 
+
 original_config_options = Config(
     experiment_name='default',
     mask_selection_range_min=0,  # 0-1
@@ -47,6 +48,7 @@ original_config_options = Config(
     random_seed=0,
     manual_central_value=0,
 )
+
 
 def get_default_config() -> Config:
     return dataclasses.replace(original_config_options)
