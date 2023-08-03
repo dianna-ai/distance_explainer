@@ -10,14 +10,47 @@ on:
 
 jobs:
 
-  build:
-    name: Build for (${{ matrix.python-version }}, ${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
+  first_build:
+    name: Build for (${{ matrix.python-version }}, ${{ matrix.os }}; first build)
+    runs-on: 'ubuntu-latest'
     strategy:
       fail-fast: false
       matrix:
-        os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
-        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
+        os: ['ubuntu-latest']  # In first build we only test 1 os
+        python-version: ['3.11']  # In first build we only test 1 python version
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Python info
+        shell: bash -e {0}
+        run: |
+          which python3
+          python3 --version
+      - name: Upgrade pip and install dependencies
+        run: |
+          python3 -m pip install --upgrade pip setuptools
+          python3 -m pip install .[dev,publishing]
+      - name: Run unit tests
+        run: pytest -v
+      - name: Verify that we can build the package
+        run: python3 setup.py sdist bdist_wheel
+
+  other_builds:
+    name: Build for (${{ matrix.python-version }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    needs: first_build
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ 'ubuntu-latest', 'macos-latest', 'windows-latest' ]
+        python-version: [ '3.7', '3.11' ]  # Only first and last supported versions
+        exclude:
+          # already tested in first_build job
+          - python-version: 3.11
+            os: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
