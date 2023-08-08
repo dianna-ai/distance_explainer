@@ -21,7 +21,7 @@ def test_dummy_data_exact_expected_output(set_all_the_seeds: Callable, dummy_mod
     print(Path('./distance_explainer').exists())
     print(Path('./distance_explainer/tests').exists())
     print(Path('./tests').exists())
-    [expected_saliency, expected_value] = np.load('./test_data/test_dummy_data_exact_expected_output.npz').values()
+    [expected_saliency, expected_value] = np.load('./tests/test_data/test_dummy_data_exact_expected_output.npz').values()
     embedded_reference = np.random.randn(1, DUMMY_EMBEDDING_DIMENSIONALITY)
     input_arr = np.random.random((32, 32, 3))
 
