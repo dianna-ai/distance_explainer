@@ -14,7 +14,8 @@ DUMMY_EMBEDDING_DIMENSIONALITY = 10
 
 def test_dummy_data_exact_expected_output(set_all_the_seeds: Callable, dummy_model: Callable):
     """Code output should be identical to recorded output."""
-    [expected_saliency, expected_value] = np.load('./test_data/test_dummy_data_exact_expected_output.npz').values()
+    [expected_saliency, expected_value] = np.load(
+        './tests/test_data/test_dummy_data_exact_expected_output.npz').values()
     embedded_reference = np.random.randn(1, DUMMY_EMBEDDING_DIMENSIONALITY)
     input_arr = np.random.random((32, 32, 3))
 
@@ -33,9 +34,6 @@ def test_dummy_data_exact_expected_output(set_all_the_seeds: Callable, dummy_mod
     assert saliency.shape == (1,) + input_arr.shape[:2] + (1,)  # Has correct shape
     assert np.allclose(expected_saliency, saliency)  # Has correct value
     assert np.allclose(expected_value, value)  # Has correct value
-
-
-
 
 
 @pytest.fixture()
