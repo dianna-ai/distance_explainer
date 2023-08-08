@@ -23,7 +23,7 @@ class Config(YAMLWizard):
     def load(cls, path):
         try:
             return cls.from_yaml_file(path)
-        except ConstructorError as e:
+        except ConstructorError:
             with open(path, 'r') as f:
                 return cls.from_yaml('\n'.join(f.read().split('\n')[1:]))
 
