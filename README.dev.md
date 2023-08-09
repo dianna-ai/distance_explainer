@@ -62,13 +62,13 @@ coverage report
 
 ## Running linters locally
 
-For linting we will use [prospector](https://pypi.org/project/prospector/) and to sort imports we will use
+For linting we will use ruff and to sort imports we will use
 [isort](https://pycqa.github.io/isort/). Running the linters requires an activated virtual environment with the
 development tools installed.
 
 ```shell
 # linter
-prospector
+ruff .
 
 # recursively check import style for the distance_explainer module only
 isort --check-only distance_explainer
