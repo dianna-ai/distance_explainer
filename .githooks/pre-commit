@@ -15,15 +15,6 @@ if [ $? != "0" ]; then
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-echo "Starting isort analysis using configuration from setup.cfg..."
-
-# recursively run isort on distance_explainer/ directory, don't try to automatically fix anything
-isort --recursive distance_explainer
-
-if [ $? != "0" ]; then
-    echo "Commit aborted. Fix import issues found by isort before committing"
-    exit 1
-fi
 
 echo "Pre-commit checks completed successfully."
 exit 0
