@@ -1,4 +1,4 @@
-"""Documentation about distance_explainer"""
+"""Documentation about distance_explainer."""
 import logging
 
 
