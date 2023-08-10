@@ -62,6 +62,7 @@ jobs:
         run: |
           which python3
           python3 --version
+          pip freeze
       - name: Upgrade pip and install dependencies
         run: |
           python3 -m pip install --upgrade pip setuptools
