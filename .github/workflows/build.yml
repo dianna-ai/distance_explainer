@@ -36,7 +36,7 @@ jobs:
       - name: Run unit tests
         run: pytest -v
       - name: Verify that we can build the package
-        run: python3 setup.py sdist bdist_wheel
+        run: python3 -m build
 
   other_builds:
     name: Build for (${{ matrix.python-version }}, ${{ matrix.os }})
@@ -46,7 +46,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ 'ubuntu-latest', 'macos-latest', 'windows-latest' ]
-        python-version: [ '3.7', '3.11' ]  # Only first and last supported versions
+        python-version: [ '3.8', '3.11' ]  # Only first and last supported versions
         exclude:
           # already tested in first_build job
           - python-version: 3.11
@@ -69,7 +69,7 @@ jobs:
       - name: Run unit tests
         run: pytest -v
       - name: Verify that we can build the package
-        run: python3 setup.py sdist bdist_wheel
+        run: python3 -m build
 
   lint:
     name: Linting build
@@ -78,10 +78,10 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.9
+      - name: Set up Python 3.11
         uses: actions/setup-python@v3
         with:
-          python-version: 3.9
+          python-version: 3.11
       - name: Python info
         shell: bash -e {0}
         run: |
