@@ -1,13 +1,15 @@
 import dataclasses
-from dataclasses import dataclass, fields
-from typing import Optional, Union
-
+from dataclasses import dataclass
+from dataclasses import fields
+from typing import Optional
+from typing import Union
 from dataclass_wizard import YAMLWizard
 from yaml.constructor import ConstructorError
 
 
 @dataclass
 class Config(YAMLWizard):
+    """All parameters necessary to run the distance explainer."""
     experiment_name: str
     mask_selection_range_min: float
     mask_selection_range_max: float
@@ -21,9 +23,10 @@ class Config(YAMLWizard):
 
     @classmethod
     def load(cls, path):
+        """Load a config."""
         try:
             return cls.from_yaml_file(path)
-        except ConstructorError as e:
+        except ConstructorError:
             with open(path, 'r') as f:
                 return cls.from_yaml('\n'.join(f.read().split('\n')[1:]))
 
@@ -51,4 +54,5 @@ original_config_options = Config(
 
 
 def get_default_config() -> Config:
+    """Creates a distance explainer config with default values."""
     return dataclasses.replace(original_config_options)

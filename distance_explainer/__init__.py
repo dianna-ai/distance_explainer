@@ -1,6 +1,5 @@
-"""Documentation about distance_explainer"""
+"""Documentation about distance_explainer."""
 import logging
-
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())
 

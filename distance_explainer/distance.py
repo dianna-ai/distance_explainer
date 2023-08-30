@@ -1,11 +1,12 @@
 import numpy as np
-from tqdm import tqdm
-from dianna.methods.rise import generate_masks_for_images
 from dianna import utils
+from dianna.methods.rise import generate_masks_for_images
 from sklearn.metrics import pairwise_distances
+from tqdm import tqdm
 
 
 class DistanceExplainer:
+    """Explainer object to explain an image with respect to a reference point in an embedded space."""
     # axis labels required to be present in input image data
     required_labels = ('channels',)
 
@@ -13,6 +14,20 @@ class DistanceExplainer:
                  mask_selection_range_max=0.2, mask_selection_range_min=0, mask_selection_negative_range_max=1,
                  mask_selection_negative_range_min=0.8, axis_labels=None, batch_size=10,
                  preprocess_function=None):
+        """Creates an explainer object to explain an image with respect to a reference point in an embedded space.
+
+        Args:
+            n_masks: Number of masks to use to mask the input image. More increases reliability and computation.
+            feature_res: Number of features per dimension in the image. Determines the super pixel size in the masks.
+            p_keep: Probability of keeping features unmasked. Higher means less masked input.
+            batch_size: Number of masked inputs to process in a single batch by the model
+            axis_labels: Axis labels
+            preprocess_function: Preprocess function
+            mask_selection_range_max: Top end of range of outcomes that will be selected.
+            mask_selection_range_min: Lower end of range of outcomes that will be selected.
+            mask_selection_negative_range_max: Top end of range of outcomes that will be selected and weighted -1.
+            mask_selection_negative_range_min: Lower end of range of outcomes that will be selected and weighted -1.
+        """
         self.n_masks = n_masks
         self.feature_res = feature_res
         self.p_keep = p_keep
@@ -26,15 +41,16 @@ class DistanceExplainer:
         self.mask_selection_negative_range_min = mask_selection_negative_range_min
         self.batch_size = batch_size
 
-    def explain_image_distance(self, model_or_function, input_data, embedded_reference, **explain_distance_kwargs):
-        """
+    def explain_image_distance(self, model_or_function, input_data, embedded_reference):
+        """Explain an image with respect to a reference point in an embedded space.
 
-        :param model_or_function:
-        :param input_data:
-        :param embedded_reference:
-        :param explain_distance_kwargs:
-        :return: saliency map and the neutral value within the saliency map which indicates the parts of the image that
-        neither bring the image closer nor further away from the embedded reference.
+        Args:
+            model_or_function: Model that will encode the input_data into an embedded space
+            input_data: Input data to be explained, by exploring what parts make it closer to the reference point.
+            embedded_reference: Reference point in the embedded space
+        Returns:
+            saliency map and the neutral value within the saliency map which indicates the parts of the image that
+            neither bring the image closer nor further away from the embedded reference.
         """
         full_preprocess_function, input_data = self._prepare_input_data(input_data)
         runner = utils.get_function(model_or_function, preprocess_function=full_preprocess_function)
@@ -66,7 +82,9 @@ class DistanceExplainer:
 
         def describe(x, name):
             return f'Description of {name}\nmean:{np.mean(x)}\nstd:{np.std(x)}\nmin:{np.min(x)}\nmax:{np.max(x)}'
-        self.statistics = describe(highest_mask_weights, 'highest_mask_weights') +'\n' + describe(lowest_mask_weights, 'lowest_mask_weights')
+        self.statistics = '\n'.join([
+            describe(highest_mask_weights, 'highest_mask_weights'),
+            describe(lowest_mask_weights, 'lowest_mask_weights')])
 
         unnormalized_sal_lowest = np.mean(lowest_distances_masks, axis=0)
         unnormalized_sal_highest = np.mean(highest_distances_masks, axis=0)
