@@ -12,7 +12,7 @@ jobs:
 
   first_build:
     name: Build for (${{ matrix.python-version }}, ${{ matrix.os }}; first build)
-    runs-on: 'ubuntu-latest'
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -20,23 +20,9 @@ jobs:
         python-version: ['3.11']  # In first build we only test 1 python version
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
+      - uses: ./.github/actions/install-test-and-build
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Python info
-        shell: bash -e {0}
-        run: |
-          which python3
-          python3 --version
-      - name: Upgrade pip and install dependencies
-        run: |
-          python3 -m pip install --upgrade pip setuptools
-          python3 -m pip install .[dev,publishing]
-      - name: Run unit tests
-        run: pytest -v
-      - name: Verify that we can build the package
-        run: python3 -m build
 
   other_builds:
     name: Build for (${{ matrix.python-version }}, ${{ matrix.os }})
@@ -53,23 +39,9 @@ jobs:
             os: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
+      - uses: ./.github/actions/install-test-and-build
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Python info
-        shell: bash -e {0}
-        run: |
-          which python3
-          python3 --version
-      - name: Upgrade pip and install dependencies
-        run: |
-          python3 -m pip install --upgrade pip setuptools
-          python3 -m pip install .[dev,publishing]
-      - name: Run unit tests
-        run: pytest -v
-      - name: Verify that we can build the package
-        run: python3 -m build
 
   lint:
     name: Linting build
