@@ -11,13 +11,10 @@
 | (5/5) checklist                    | [![workflow cii badge](https://bestpractices.coreinfrastructure.org/projects/<replace-with-created-project-identifier>/badge)](https://bestpractices.coreinfrastructure.org/projects/<replace-with-created-project-identifier>) |
 | howfairis                          | [![fair-software badge](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B-yellow)](https://fair-software.eu) |
 | **Other best practices**           | &nbsp; |
-| Static analysis                    | [![workflow scq badge](https://sonarcloud.io/api/project_badges/measure?project=dianna-ai_distance_explainer&metric=alert_status)](https://sonarcloud.io/dashboard?id=dianna-ai_distance_explainer) |
-| Coverage                           | [![workflow scc badge](https://sonarcloud.io/api/project_badges/measure?project=dianna-ai_distance_explainer&metric=coverage)](https://sonarcloud.io/dashboard?id=dianna-ai_distance_explainer) |
 | Documentation                      | [![Documentation Status](https://readthedocs.org/projects/distance_explainer/badge/?version=latest)](https://distance_explainer.readthedocs.io/en/latest/?badge=latest) |
 | **GitHub Actions**                 | &nbsp; |
 | Build                              | [![build](git@github.com:dianna-ai/distance_explainer/actions/workflows/build.yml/badge.svg)](git@github.com:dianna-ai/distance_explainer/actions/workflows/build.yml) |
 | Citation data consistency               | [![cffconvert](git@github.com:dianna-ai/distance_explainer/actions/workflows/cffconvert.yml/badge.svg)](git@github.com:dianna-ai/distance_explainer/actions/workflows/cffconvert.yml) |
-| SonarCloud                         | [![sonarcloud](git@github.com:dianna-ai/distance_explainer/actions/workflows/sonarcloud.yml/badge.svg)](git@github.com:dianna-ai/distance_explainer/actions/workflows/sonarcloud.yml) |
 | MarkDown link checker              | [![markdown-link-check](git@github.com:dianna-ai/distance_explainer/actions/workflows/markdown-link-check.yml/badge.svg)](git@github.com:dianna-ai/distance_explainer/actions/workflows/markdown-link-check.yml) |
 
 ## How to use distance_explainer
