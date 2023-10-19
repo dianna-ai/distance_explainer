@@ -15,7 +15,7 @@ python3 -m pip install .
 ## Contributing
 
 If you want to contribute to the development of distance_explainer,
-have a look at the [contribution guidelines](CONTRIBUTING.md).
+have a look at the [contribution guidelines](docs/CONTRIBUTING.md).
 
 ## Credits
 
