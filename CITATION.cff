@@ -13,7 +13,7 @@ authors:
     orcid: "https://orcid.org/0000-0002-6033-960X"
 
 date-released: 2023-10-19
-doi: <insert your DOI here>
+doi: 10.5281/zenodo.10018768.
 version: "0.1.0"
 repository-code: "git@github.com:dianna-ai/distance_explainer"
 keywords:
