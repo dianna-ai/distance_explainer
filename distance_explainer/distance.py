@@ -65,6 +65,9 @@ class DistanceExplainer:
             self.masks = generate_masks_for_images(img_shape, self.n_masks, active_p_keep, self.feature_res)
         else:
             self.masks = masks
+            if self.masks.shape[0] != self.n_masks:
+                raise ValueError(f"Configured n_masks ({self.n_masks}) is not equal to the number of masks passed "
+                                 f"({self.masks.shape[0]}).")
 
         # Make sure multiplication is being done for correct axes
         masked = input_data * self.masks
@@ -77,17 +80,20 @@ class DistanceExplainer:
 
         self.predictions = np.concatenate(batch_predictions)
 
-        lowest_distances_masks, lowest_mask_weights = self._get_lowest_distance_masks_and_weights(embedded_reference,
-                                                                                           self.predictions, self.masks,
-                                                                                           self.mask_selection_range_min,
-                                                                                           self.mask_selection_range_max)
-        highest_distances_masks, highest_mask_weights = self._get_lowest_distance_masks_and_weights(embedded_reference,
-                                                                                           self.predictions, self.masks,
-                                                                                           self.mask_selection_negative_range_min,
-                                                                                           self.mask_selection_negative_range_max)
+        lowest_distances_masks, lowest_mask_weights = self._get_lowest_distance_masks_and_weights(
+            embedded_reference,
+            self.predictions, self.masks,
+            self.mask_selection_range_min,
+            self.mask_selection_range_max)
+        highest_distances_masks, highest_mask_weights = self._get_lowest_distance_masks_and_weights(
+            embedded_reference,
+            self.predictions, self.masks,
+            self.mask_selection_negative_range_min,
+            self.mask_selection_negative_range_max)
 
         def describe(x, name):
             return f'Description of {name}\nmean:{np.mean(x)}\nstd:{np.std(x)}\nmin:{np.min(x)}\nmax:{np.max(x)}'
+
         self.statistics = '\n'.join([
             describe(highest_mask_weights, 'highest_mask_weights'),
             describe(lowest_mask_weights, 'lowest_mask_weights')])
