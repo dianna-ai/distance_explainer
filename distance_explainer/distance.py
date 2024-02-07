@@ -1,6 +1,6 @@
 import numpy as np
 from dianna import utils
-from dianna.methods.rise import generate_masks_for_images
+from dianna.utils.maskers import generate_masks_for_images
 from sklearn.metrics import pairwise_distances
 from tqdm import tqdm
 
