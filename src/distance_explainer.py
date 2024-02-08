@@ -1,8 +1,17 @@
+"""Documentation about distance_explainer."""
+
 import numpy as np
 import dianna.utils
 from dianna.utils.maskers import generate_masks_for_images
 from sklearn.metrics import pairwise_distances
 from tqdm import tqdm
+import logging
+
+logging.getLogger(__name__).addHandler(logging.NullHandler())
+
+__author__ = "Christiaan Meijer"
+__email__ = "c.meijer@esciencecenter.nl"
+__version__ = "0.2.0"
 
 
 class DistanceExplainer:

@@ -3,7 +3,7 @@ import os
 from typing import Callable
 import numpy as np
 import pytest
-from distance_explainer.distance import DistanceExplainer
+from distance_explainer import DistanceExplainer
 from tests.config import get_default_config
 
 DUMMY_EMBEDDING_DIMENSIONALITY = 10
