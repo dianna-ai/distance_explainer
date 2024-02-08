@@ -89,26 +89,36 @@ class DistanceExplainer:
 
         self.predictions = np.concatenate(batch_predictions)
 
-        lowest_distances_masks, lowest_mask_weights = self._get_lowest_distance_masks_and_weights(
-            embedded_reference,
-            self.predictions, self.masks,
-            self.mask_selection_range_min,
-            self.mask_selection_range_max)
+        def describe(x, name):
+            return f'Description of {name}\nmean:{np.mean(x)}\nstd:{np.std(x)}\nmin:{np.min(x)}\nmax:{np.max(x)}'
+
+        statistics = []
+
         highest_distances_masks, highest_mask_weights = self._get_lowest_distance_masks_and_weights(
             embedded_reference,
             self.predictions, self.masks,
             self.mask_selection_negative_range_min,
             self.mask_selection_negative_range_max)
 
-        def describe(x, name):
-            return f'Description of {name}\nmean:{np.mean(x)}\nstd:{np.std(x)}\nmin:{np.min(x)}\nmax:{np.max(x)}'
+        if len(highest_mask_weights) > 0:
+            statistics.append(describe(highest_mask_weights, 'highest_mask_weights'))
+            unnormalized_sal_highest = np.mean(highest_distances_masks, axis=0)
+        else:
+            unnormalized_sal_highest = 0
 
-        self.statistics = '\n'.join([
-            describe(highest_mask_weights, 'highest_mask_weights'),
-            describe(lowest_mask_weights, 'lowest_mask_weights')])
+        lowest_distances_masks, lowest_mask_weights = self._get_lowest_distance_masks_and_weights(
+            embedded_reference,
+            self.predictions, self.masks,
+            self.mask_selection_range_min,
+            self.mask_selection_range_max)
 
-        unnormalized_sal_lowest = np.mean(lowest_distances_masks, axis=0)
-        unnormalized_sal_highest = np.mean(highest_distances_masks, axis=0)
+        if len(lowest_mask_weights) > 0:
+            statistics.append(describe(lowest_mask_weights, 'lowest_mask_weights'))
+            unnormalized_sal_lowest = np.mean(lowest_distances_masks, axis=0)
+        else:
+            unnormalized_sal_lowest = 0
+
+        self.statistics = '\n'.join(statistics)
         unnormalized_sal = unnormalized_sal_lowest - unnormalized_sal_highest
 
         saliency = unnormalized_sal
