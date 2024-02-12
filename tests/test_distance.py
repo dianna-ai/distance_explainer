@@ -1,12 +1,13 @@
 """Tests for the distance_explainer."""
+import dataclasses
 import os
 from typing import Callable
 import numpy as np
-from numpy.typing import ArrayLike
 import pytest
+from numpy.typing import ArrayLike
 from distance_explainer import DistanceExplainer
-from tests.config import get_default_config, Config
-import dataclasses
+from tests.config import Config
+from tests.config import get_default_config
 
 DUMMY_EMBEDDING_DIMENSIONALITY = 10
 

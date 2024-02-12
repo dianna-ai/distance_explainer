@@ -1,11 +1,11 @@
 """Documentation about distance_explainer."""
 
-import numpy as np
+import logging
 import dianna.utils
+import numpy as np
 from dianna.utils.maskers import generate_masks_for_images
 from sklearn.metrics import pairwise_distances
 from tqdm import tqdm
-import logging
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())
 
