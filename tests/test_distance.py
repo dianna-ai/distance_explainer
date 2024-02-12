@@ -25,12 +25,14 @@ def dummy_model() -> Callable:
 
 @pytest.fixture
 def dummy_data() -> tuple[ArrayLike, ArrayLike]:
+    """Get random dummy data."""
     embedded_reference = np.random.randn(1, DUMMY_EMBEDDING_DIMENSIONALITY)
     input_arr = np.random.random((32, 32, 3))
     return embedded_reference, input_arr
 
 
-def get_explainer(config: Config, axis_labels={2: 'channels'}, preprocess_function=None):
+def get_explainer(config: Config, axis_labels={2: 'channels'}, preprocess_function=None) -> DistanceExplainer:
+    """Get explainer object."""
     explainer = DistanceExplainer(mask_selection_range_max=config.mask_selection_range_max,
                                   mask_selection_range_min=config.mask_selection_range_min,
                                   mask_selection_negative_range_max=config.mask_selection_negative_range_max,
@@ -77,6 +79,7 @@ def test_distance_explainer_one_sided(dummy_data: tuple[ArrayLike, ArrayLike],
 
     # np.savez(f'./tests/test_data/test_dummy_data_exact_expected_output_{expected_tag}.npz',
     #          expected_saliency=saliency, expected_value=value)
-    expected_saliency, expected_value = np.load(f'./tests/test_data/test_dummy_data_exact_expected_output_{expected_tag}.npz').values()
+    expected_saliency, expected_value = np.load(
+        f'./tests/test_data/test_dummy_data_exact_expected_output_{expected_tag}.npz').values()
     assert np.allclose(expected_saliency, saliency)  # Has correct value
     assert np.allclose(expected_value, value)  # Has correct value
