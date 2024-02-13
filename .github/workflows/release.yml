@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/install-python-and-package
+      - uses: ./.github/actions/install-test-and-build
         with:
           extras-require: publishing
       - name: Build wheel and source distribution
