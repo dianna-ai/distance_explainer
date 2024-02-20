@@ -19,6 +19,7 @@ jobs:
         run: python -m build
       - uses: actions/upload-artifact@v4
         with:
+          name: python-package-distributions
           path: dist/*
 
   upload_test_pypi:
