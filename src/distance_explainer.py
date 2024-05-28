@@ -123,9 +123,7 @@ class DistanceExplainer:
 
         saliency = unnormalized_sal
 
-        input_prediction = runner(input_data)
-        input_distance = DistanceExplainer.calculate_distances(input_prediction, embedded_reference)
-        neutral_value = np.exp(-input_distance)
+        neutral_value = active_p_keep
 
         # for one-sided experiments, use "meaningful" neutral value (the unperturbed distance), otherwise center on 0
         if len(lowest_mask_weights) > 0 and len(highest_mask_weights) == 0:
