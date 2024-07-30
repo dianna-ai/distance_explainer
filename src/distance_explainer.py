@@ -3,7 +3,7 @@
 import logging
 import dianna.utils
 import numpy as np
-from dianna.utils.maskers import generate_masks_for_images
+from dianna.utils.maskers import generate_interpolated_float_masks_for_image
 from sklearn.metrics import pairwise_distances
 from tqdm import tqdm
 import numpy.typing
@@ -12,7 +12,7 @@ logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 __author__ = "Christiaan Meijer"
 __email__ = "c.meijer@esciencecenter.nl"
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 
 class DistanceExplainer:
@@ -72,7 +72,7 @@ class DistanceExplainer:
         img_shape = input_data.shape[1:3]
         # Expose masks for to make user inspection possible
         if masks is None:
-            self.masks = generate_masks_for_images(img_shape, self.n_masks, active_p_keep, self.feature_res)
+            self.masks = generate_interpolated_float_masks_for_image(img_shape, active_p_keep, self.n_masks, self.feature_res)
         else:
             self.masks = masks
             if self.masks.shape[0] != self.n_masks:
