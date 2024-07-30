@@ -6,6 +6,7 @@ import numpy as np
 from dianna.utils.maskers import generate_masks_for_images
 from sklearn.metrics import pairwise_distances
 from tqdm import tqdm
+import numpy.typing
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())
 
@@ -50,7 +51,7 @@ class DistanceExplainer:
         self.mask_selection_negative_range_min = mask_selection_negative_range_min
         self.batch_size = batch_size
 
-    def explain_image_distance(self, model_or_function, input_data, embedded_reference, masks=None):
+    def explain_image_distance(self, model_or_function, input_data, embedded_reference, masks=None) -> tuple[numpy.typing.NDArray, float]:
         """Explain an image with respect to a reference point in an embedded space.
 
         Args:
