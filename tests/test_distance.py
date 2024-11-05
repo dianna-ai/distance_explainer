@@ -54,23 +54,10 @@ def test_distance_explainer_saliency(dummy_data: tuple[ArrayLike, ArrayLike],
     explainer = get_explainer(get_default_config())
     expected_saliency, expected_value = np.load('./tests/test_data/test_dummy_data_exact_expected_output.npz').values()
 
-    saliency, value = explainer.explain_image_distance(dummy_model, input_arr, embedded_reference)
+    saliency = explainer.explain_image_distance(dummy_model, input_arr, embedded_reference)
 
     assert saliency.shape == (1,) + input_arr.shape[:2] + (1,)  # Has correct shape
     assert np.allclose(expected_saliency, saliency)  # Has correct saliency
-
-
-@pytest.mark.skip("See 'neutral value not correct #19', https://github.com/dianna-ai/distance_explainer/issues/19")
-def test_distance_explainer_value(dummy_data: tuple[ArrayLike, ArrayLike],
-                                  dummy_model: Callable):
-    """Code output should be identical to recorded value."""
-    embedded_reference, input_arr = dummy_data
-    explainer = get_explainer(get_default_config())
-    expected_saliency, expected_value = np.load('./tests/test_data/test_dummy_data_exact_expected_output.npz').values()
-
-    saliency, value = explainer.explain_image_distance(dummy_model, input_arr, embedded_reference)
-
-    assert np.allclose(expected_value, value)  # Has correct value
 
 
 @pytest.mark.parametrize("empty_side,expected_tag",
@@ -87,26 +74,6 @@ def test_distance_explainer_one_sided_saliency(dummy_data: tuple[ArrayLike, Arra
     config = dataclasses.replace(get_default_config(), **empty_side)
     explainer = get_explainer(config)
 
-    saliency, value = explainer.explain_image_distance(dummy_model, input_arr, embedded_reference)
+    saliency = explainer.explain_image_distance(dummy_model, input_arr, embedded_reference)
     assert saliency.shape == (1,) + input_arr.shape[:2] + (1,)  # Has correct shape
     assert np.allclose(expected_saliency, saliency)  # Has correct saliency
-
-
-@pytest.mark.skip("See 'neutral value not correct #19', https://github.com/dianna-ai/distance_explainer/issues/19")
-@pytest.mark.parametrize("empty_side,expected_tag",
-                         [({"mask_selection_range_max": 0.}, "pos_empty"),
-                          ({"mask_selection_negative_range_min": 1.}, "neg_empty")])
-def test_distance_explainer_one_sided_value(dummy_data: tuple[ArrayLike, ArrayLike],
-                                            dummy_model: Callable,
-                                            empty_side: dict[str, float],
-                                            expected_tag: str):
-    """Code output should be identical to recorded saliency."""
-    embedded_reference, input_arr = dummy_data
-    expected_saliency, expected_value = np.load(
-        f'./tests/test_data/test_dummy_data_exact_expected_output_{expected_tag}.npz').values()
-    config = dataclasses.replace(get_default_config(), **empty_side)
-    explainer = get_explainer(config)
-
-    saliency, value = explainer.explain_image_distance(dummy_model, input_arr, embedded_reference)
-
-    assert np.allclose(expected_value, value)  # Has correct value
