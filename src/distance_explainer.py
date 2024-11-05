@@ -130,9 +130,7 @@ class DistanceExplainer:
     @staticmethod
     def _get_lowest_distance_masks_and_weights(embedded_reference, predictions, masks, mask_selection_range_min,
                                                mask_selection_range_max):
-        ref = embedded_reference[None, ...]
-        print(f'{ref.shape=}')
-        distances = DistanceExplainer.calculate_distances(predictions, ref)
+        distances = DistanceExplainer.calculate_distances(predictions, embedded_reference[None, ...])
 
         lowest_distances_indices = np.argsort(distances, axis=0)[
                                    int(len(predictions) * mask_selection_range_min)
