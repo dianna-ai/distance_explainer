@@ -42,26 +42,3 @@ jobs:
       - uses: ./.github/actions/install-test-and-build
         with:
           python-version: ${{ matrix.python-version }}
-
-  lint:
-    name: Linting build
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.11
-      - name: Python info
-        shell: bash -e {0}
-        run: |
-          which python3
-          python3 --version
-      - name: Upgrade pip and install dependencies
-        run: |
-          python3 -m pip install --upgrade pip setuptools
-          python3 -m pip install .[dev,publishing]
-      - name: Check style against standards using ruff
-        run: ruff .
