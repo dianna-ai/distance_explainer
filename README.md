@@ -16,7 +16,18 @@ git clone git@github.com:dianna-ai/distance_explainer.git
 cd distance_explainer
 python3 -m pip install .
 ```
+## How to use
 
+See our [tutorial](tutorial.ipynb) how to use this package.
+In short:
+```python
+image1 = np.random.random((100, 100, 3))
+image2 = np.random.random((100, 100, 3))
+
+image2_embedded = model(image2)
+explainer = DistanceExplainer(axis_labels={2: 'channels'})
+attribution_map = explainer.explain_image_distance(model, image1, image2_embedded)
+```
 ## Contributing
 
 If you want to contribute to the development of distance_explainer,
