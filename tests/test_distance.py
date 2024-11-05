@@ -28,7 +28,7 @@ def dummy_model() -> Callable:
 @pytest.fixture
 def dummy_data() -> tuple[ArrayLike, ArrayLike]:
     """Get random dummy data."""
-    embedded_reference = np.random.randn(1, DUMMY_EMBEDDING_DIMENSIONALITY)
+    embedded_reference = np.random.randn(DUMMY_EMBEDDING_DIMENSIONALITY)
     input_arr = np.random.random((32, 32, 3))
     return embedded_reference, input_arr
 
