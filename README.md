@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10018768.svg)](https://doi.org/10.5281/zenodo.10018768) [![workflow pypi badge](https://img.shields.io/pypi/v/distance_explainer.svg?colorB=blue)](https://pypi.python.org/project/distance_explainer/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10018768.svg)](https://doi.org/10.5281/zenodo.10018768) [![workflow pypi badge](https://img.shields.io/pypi/v/distance-explainer.svg?colorB=blue)](https://pypi.python.org/project/distance-explainer/)
 
 # `distance_explainer`
 
