@@ -9,7 +9,13 @@ XAI method to explain distances in embedded spaces.
 
 ## Installation
 
-To install distance_explainer from GitHub repository, do:
+There are 2 ways to install distance_explainer. To install distance_explainer from PyPI (recommended) run:
+
+```console
+pip install distance_explainer
+```
+
+To instead install distance_explainer from the GitHub repository, run:
 
 ```console
 git clone git@github.com:dianna-ai/distance_explainer.git
