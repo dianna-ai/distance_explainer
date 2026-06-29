@@ -19,7 +19,7 @@ jobs:
         os: ['ubuntu-latest']  # In first build we only test 1 os
         python-version: ['3.12']  # In first build we only test 1 python version
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install-test-and-build
         with:
           python-version: ${{ matrix.python-version }}
@@ -38,7 +38,7 @@ jobs:
           - python-version: 3.12
             os: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install-test-and-build
         with:
           python-version: ${{ matrix.python-version }}
