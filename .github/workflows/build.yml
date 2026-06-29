@@ -17,9 +17,9 @@ jobs:
       fail-fast: false
       matrix:
         os: ['ubuntu-latest']  # In first build we only test 1 os
-        python-version: ['3.11']  # In first build we only test 1 python version
+        python-version: ['3.12']  # In first build we only test 1 python version
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install-test-and-build
         with:
           python-version: ${{ matrix.python-version }}
@@ -32,13 +32,13 @@ jobs:
       fail-fast: false
       matrix:
         os: [ 'ubuntu-latest', 'macos-latest', 'windows-latest' ]
-        python-version: [ '3.9', '3.11' ]  # Only first and last supported versions
+        python-version: [ '3.10', '3.11', '3.12' ]
         exclude:
           # already tested in first_build job
-          - python-version: 3.11
+          - python-version: 3.12
             os: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install-test-and-build
         with:
           python-version: ${{ matrix.python-version }}
