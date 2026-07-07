@@ -4,7 +4,7 @@
 
 XAI method to explain distances in embedded spaces.
 
-![overview schema](https://github.com/user-attachments/assets/bbd5a79c-c50b-47a2-89fc-d8ed3053c845)
+![overview schema](docs/splash.png)
 
 
 ## Installation
