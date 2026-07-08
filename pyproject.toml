@@ -2,6 +2,59 @@
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "distance_explainer"
+version = "0.5.0"
+description = "XAI method to explain distances in embedded spaces"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Christiaan Meijer", email = "c.meijer@esciencecenter.nl"},
+    {name = "Patrick Bos", email = "e.g.p.bos@rug.nl"},
+]
+keywords = ["XAI", "embedded spaces"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "dianna>=1.8",
+    "numpy>=1.22",
+    "tqdm>=4.62",
+    "scikit-learn>=1.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/dianna-ai/distance_explainer"
+"Bug Tracker" = "https://github.com/dianna-ai/distance_explainer/issues"
+
+[project.optional-dependencies]
+dev = [
+    "build",
+    "bump2version",
+    "coverage[toml]",
+    "dataclass_wizard[yaml]>=1.0",
+    "ruff",
+    "pytest>=7.0",
+    "pytest-cov",
+    "sphinx",
+    "sphinx_rtd_theme",
+    "sphinx-autoapi",
+    "tox",
+    "myst_parser",
+]
+publishing = [
+    "twine",
+    "wheel",
+]
+
 [tool.setuptools.packages.find]
 exclude = ["tests*"]
 
