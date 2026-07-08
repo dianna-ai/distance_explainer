@@ -34,6 +34,31 @@ image2_embedded = model(image2)
 explainer = DistanceExplainer(axis_labels={2: 'channels'})
 attribution_map = explainer.explain_image_distance(model, image1, image2_embedded)
 ```
+
+## If you use, please cite
+
+If you use Distance Explainer for your research, please cite our method paper and the software itself:
+
+- **Method paper:** "Explainable embeddings with Distance Explainer" — [arXiv:2505.15516](https://arxiv.org/abs/2505.15516) (to appear in the XAI26 proceedings)
+- **Software:** `distance_explainer` — [doi:10.5281/zenodo.10018768](https://doi.org/10.5281/zenodo.10018768)
+
+```bibtex
+@article{meijer2025explainable,
+  title={Explainable embeddings with {D}istance {E}xplainer},
+  author={Meijer, Christiaan and Bos, E. G. Patrick},
+  journal={arXiv preprint arXiv:2505.15516},
+  year={2025},
+  note={To appear in the XAI26 proceedings}
+}
+
+@software{meijer2023distance,
+  title={distance_explainer},
+  author={Meijer, Christiaan and Bos, Patrick},
+  doi={10.5281/zenodo.10018768},
+  year={2023}
+}
+```
+
 ## Contributing
 
 If you want to contribute to the development of distance_explainer,
