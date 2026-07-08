@@ -12,7 +12,7 @@ authors:
     given-names: Patrick
     orcid: "https://orcid.org/0000-0002-6033-960X"
 
-date-released: 2023-10-19
+date-released: 2026-06-29
 doi: 10.5281/zenodo.10018768.
 version: "0.5.0"
 repository-code: "git@github.com:dianna-ai/distance_explainer"
@@ -21,3 +21,17 @@ keywords:
   - embedded spaces
 message: "If you use this software, please cite it using these metadata."
 license: Apache-2.0
+preferred-citation:
+  title: "Explainable embeddings with Distance Explainer"
+  authors:
+    -
+      family-names: Meijer
+      given-names: Christiaan
+    -
+      family-names: Bos
+      given-names: E. G. Patrick
+  type: article
+  journal: "arXiv preprint arXiv:2505.15516"
+  year: 2025
+  doi: 10.48550/arXiv.2505.15516
+  notes: "To appear in the XAI26 proceedings"
