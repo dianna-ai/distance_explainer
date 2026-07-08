@@ -8,7 +8,7 @@ version = "0.5.0"
 description = "XAI method to explain distances in embedded spaces"
 readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
 authors = [
     {name = "Christiaan Meijer", email = "c.meijer@esciencecenter.nl"},
     {name = "Patrick Bos", email = "e.g.p.bos@rug.nl"},
@@ -17,7 +17,6 @@ keywords = ["XAI", "embedded spaces"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: Apache Software License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -55,8 +54,9 @@ publishing = [
     "wheel",
 ]
 
-[tool.setuptools.packages.find]
-exclude = ["tests*"]
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["distance_explainer"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
