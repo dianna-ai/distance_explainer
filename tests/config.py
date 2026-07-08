@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from dataclasses import fields
 from typing import Optional
 from typing import Union
-from dataclass_wizard import YAMLWizard
+from dataclass_wizard.mixins.yaml import YAMLWizard
 from yaml.constructor import ConstructorError
 
 
