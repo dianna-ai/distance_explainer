@@ -1,6 +1,6 @@
 # `distance_explainer` developer documentation
 
-If you're looking for user documentation, start from the [documentation home](index.rst).
+If you're looking for user documentation, start from the [documentation home](index.md).
 
 ## Development install
 

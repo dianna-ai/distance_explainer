@@ -24,7 +24,7 @@ python3 -m pip install .
 ```
 ## How to use
 
-See our [documentation](https://dianna-ai.github.io/distance_explainer/) and [tutorial](tutorial.ipynb) how to use this package.
+See our [documentation](https://dianna-ai.github.io/distance_explainer/) and [tutorial](https://dianna-ai.github.io/distance_explainer/tutorial.html) how to use this package.
 In short:
 ```python
 image1 = np.random.random((100, 100, 3))
