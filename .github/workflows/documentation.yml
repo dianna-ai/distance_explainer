@@ -48,7 +48,7 @@ jobs:
         run: touch docs/_build/html/.nojekyll
       - name: Upload GitHub Pages artifact
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: docs/_build/html
 
@@ -66,4 +66,4 @@ jobs:
     steps:
       - name: Deploy GitHub Pages site
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
