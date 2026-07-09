@@ -37,7 +37,7 @@ Homepage = "https://github.com/dianna-ai/distance_explainer"
 [project.optional-dependencies]
 dev = [
     "build",
-    "bump2version",
+    "bump-my-version",
     "coverage[toml]",
     "dataclass_wizard[yaml]>=1.0",
     "ruff",
@@ -60,6 +60,29 @@ py-modules = ["distance_explainer"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.bumpversion]
+current_version = "0.5.0"
+
+[[tool.bumpversion.files]]
+filename = "src/distance_explainer.py"
+search = "__version__ = \"{current_version}\""
+replace = "__version__ = \"{new_version}\""
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = "version = \"{current_version}\""
+replace = "version = \"{new_version}\""
+
+[[tool.bumpversion.files]]
+filename = "CITATION.cff"
+search = "version: \"{current_version}\""
+replace = "version: \"{new_version}\""
+
+[[tool.bumpversion.files]]
+filename = "docs/conf.py"
+search = "version = \"{current_version}\""
+replace = "version = \"{new_version}\""
 
 [tool.coverage.run]
 branch = true
