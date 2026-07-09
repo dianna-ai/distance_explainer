@@ -22,6 +22,9 @@ runs:
       run: |
         python3 -m pip install --upgrade pip setuptools
         python3 -m pip install .[dev,publishing]
+    - name: Run linter
+      shell: bash -e {0}
+      run: ruff check .
     - name: Run unit tests
       shell: bash {0}
       run: pytest -v
