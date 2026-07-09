@@ -4,7 +4,7 @@
 
 XAI method to explain distances in embedded spaces.
 
-![overview schema](docs/splash.png)
+![overview schema](https://raw.githubusercontent.com/dianna-ai/distance_explainer/main/docs/splash.png)
 
 
 ## Installation
