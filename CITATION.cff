@@ -14,7 +14,7 @@ authors:
 
 date-released: 2026-07-09
 doi: 10.5281/zenodo.10018768.
-version: "0.5.1"
+version: "0.6.0"
 repository-code: "git@github.com:dianna-ai/distance_explainer"
 keywords:
   - XAI

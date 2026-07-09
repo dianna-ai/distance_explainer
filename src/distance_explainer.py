@@ -12,7 +12,7 @@ logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 __author__ = "Christiaan Meijer"
 __email__ = "c.meijer@esciencecenter.nl"
-__version__ = "0.5.1"
+__version__ = "0.6.0"
 
 
 class DistanceExplainer:
@@ -21,8 +21,8 @@ class DistanceExplainer:
     required_labels = ('channels',)
 
     def __init__(self, n_masks=1000, feature_res=8, p_keep=.5,  # pylint: disable=too-many-arguments
-                 mask_selection_range_max=0.2, mask_selection_range_min=0, mask_selection_negative_range_max=1,
-                 mask_selection_negative_range_min=0.8, axis_labels=None, batch_size=10,
+                 mask_selection_range_max=0.1, mask_selection_range_min=0, mask_selection_negative_range_max=1,
+                 mask_selection_negative_range_min=0.9, axis_labels=None, batch_size=10,
                  preprocess_function=None):
         """Creates an explainer object to explain an image with respect to a reference point in an embedded space.
 

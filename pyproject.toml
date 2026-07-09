@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "distance_explainer"
-version = "0.5.1"
+version = "0.6.0"
 description = "XAI method to explain distances in embedded spaces"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -66,7 +66,7 @@ py-modules = ["distance_explainer"]
 testpaths = ["tests"]
 
 [tool.bumpversion]
-current_version = "0.5.1"
+current_version = "0.6.0"
 
 [[tool.bumpversion.files]]
 filename = "src/distance_explainer.py"
