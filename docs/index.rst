@@ -14,6 +14,7 @@ the API reference and the project documentation for users and contributors.
   :caption: Contents:
 
   autoapi/index
+  tutorial
   CONTRIBUTING
   CODE_OF_CONDUCT
   README.dev

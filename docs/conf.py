@@ -45,7 +45,7 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx.ext.viewcode",
     "autoapi.extension",
-    "myst_parser",
+    "myst_nb",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -58,6 +58,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
+nb_execution_mode = "off"
 
 # -- Use autoapi.extension to run sphinx-apidoc -------
 

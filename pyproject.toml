@@ -48,7 +48,7 @@ dev = [
     "sphinx_rtd_theme",
     "sphinx-autoapi",
     "tox",
-    "myst_parser",
+    "myst-nb",
 ]
 publishing = [
     "twine",
