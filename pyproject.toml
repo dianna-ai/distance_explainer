@@ -33,6 +33,7 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/dianna-ai/distance_explainer"
 "Bug Tracker" = "https://github.com/dianna-ai/distance_explainer/issues"
+Documentation = "https://dianna-ai.github.io/distance_explainer/"
 
 [project.optional-dependencies]
 dev = [
@@ -47,7 +48,7 @@ dev = [
     "sphinx_rtd_theme",
     "sphinx-autoapi",
     "tox",
-    "myst_parser",
+    "myst-nb",
 ]
 publishing = [
     "twine",

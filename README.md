@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10018768.svg)](https://doi.org/10.5281/zenodo.10018768) [![workflow pypi badge](https://img.shields.io/pypi/v/distance-explainer.svg?colorB=blue)](https://pypi.python.org/project/distance-explainer/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10018768.svg)](https://doi.org/10.5281/zenodo.10018768) [![workflow pypi badge](https://img.shields.io/pypi/v/distance-explainer.svg?colorB=blue)](https://pypi.python.org/project/distance-explainer/) [![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://dianna-ai.github.io/distance_explainer/)
 
 # `distance_explainer`
 
@@ -24,7 +24,7 @@ python3 -m pip install .
 ```
 ## How to use
 
-See our [tutorial](tutorial.ipynb) how to use this package.
+See our [documentation](https://dianna-ai.github.io/distance_explainer/) and [tutorial](tutorial.ipynb) how to use this package.
 In short:
 ```python
 image1 = np.random.random((100, 100, 3))
