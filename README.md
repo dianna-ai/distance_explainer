@@ -24,7 +24,7 @@ python3 -m pip install .
 ```
 ## How to use
 
-See our [documentation](https://dianna-ai.github.io/distance_explainer/) and [tutorial](tutorial.ipynb) how to use this package.
+See our [documentation](https://dianna-ai.github.io/distance_explainer/) and [tutorial notebook](https://github.com/dianna-ai/distance_explainer/blob/main/tutorial.ipynb) for how to use this package.
 In short:
 ```python
 image1 = np.random.random((100, 100, 3))
@@ -62,7 +62,7 @@ If you use Distance Explainer for your research, please cite our method paper an
 ## Contributing
 
 If you want to contribute to the development of distance_explainer,
-have a look at the [contribution guidelines](docs/CONTRIBUTING.md).
+have a look at the [contribution guidelines](https://github.com/dianna-ai/distance_explainer/blob/main/docs/CONTRIBUTING.md).
 
 ## Credits
 
