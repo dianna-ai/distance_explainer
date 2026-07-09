@@ -58,6 +58,9 @@ publishing = [
 package-dir = {"" = "src"}
 py-modules = ["distance_explainer"]
 
+[tool.setuptools.data-files]
+"." = ["CITATION.cff"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
