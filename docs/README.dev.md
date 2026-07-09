@@ -1,6 +1,6 @@
 # `distance_explainer` developer documentation
 
-If you're looking for user documentation, go [here](README.md).
+If you're looking for user documentation, start from the [documentation home](index.rst).
 
 ## Development install
 
@@ -32,7 +32,7 @@ coverage run && coverage report
 ## Running linters
 
 ```shell
-ruff .
+ruff check .
 ```
 
 To run linters automatically on commit, enable the git hook:
@@ -53,7 +53,7 @@ bump-my-version bump patch
 
 ## Making a release
 
-Releases are fully automated via [GitHub Actions](.github/workflows/release.yml). To make a release:
+Releases are fully automated via [GitHub Actions](https://github.com/dianna-ai/distance_explainer/blob/main/.github/workflows/release.yml). To make a release:
 
 1. Create a [GitHub Release](https://github.com/dianna-ai/distance_explainer/releases/new) with a new tag.
 2. The workflow automatically builds and uploads the package to PyPI.
